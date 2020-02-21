@@ -16,6 +16,7 @@ Namespace CL515App
 
         ' GET: Tag_Choices
         Async Function Index() As Task(Of ActionResult)
+            ViewBag.tag_Info = Await db.Tag_Info.ToListAsync()
             Return View(Await db.Tag_Choices.ToListAsync())
         End Function
 

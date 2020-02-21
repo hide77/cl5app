@@ -7,7 +7,7 @@ Partial Public Class TagModel
     Inherits DbContext
 
     Public Sub New()
-        MyBase.New("name=TagModel")
+        MyBase.New("name=LocalModel")
     End Sub
 
     Public Overridable Property Tag_Choices As DbSet(Of Tag_Choices)

@@ -32,6 +32,9 @@ Partial Public Class Tag_Choices
     <Display(Name:="Added At")>
     Public Property AddedAt As Date
 
+    '<ForeignKey("Tag_Info")>
+    '<Display(Name:="Tag_Info_Tag_InfoID")>
+    'Public Property Tag_Info_Tag_InfoID As Integer
 
 
 End Class

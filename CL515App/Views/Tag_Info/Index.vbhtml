@@ -4,13 +4,16 @@ ViewData("Title") = "Index"
 Layout = "~/Views/Shared/_Layout.vbhtml"
 End Code
 
-<h2>Index</h2>
+<h2>Manage Tag Fields</h2>
 
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
 <table class="table">
     <tr>
+        <th>
+            @Html.DisplayNameFor(Function(model) model.Tag_InfoID)
+        </th>
         <th>
             @Html.DisplayNameFor(Function(model) model.TagName)
         </th>
@@ -28,6 +31,9 @@ End Code
 
 @For Each item In Model
     @<tr>
+        <td>
+            @Html.DisplayFor(Function(modelItem) item.Tag_InfoID)
+        </td>
         <td>
             @Html.DisplayFor(Function(modelItem) item.TagName)
         </td>

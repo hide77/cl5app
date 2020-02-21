@@ -4,11 +4,18 @@ ViewData("Title") = "Index"
 Layout = "~/Views/Shared/_Layout.vbhtml"
 End Code
 
-<h2>Index</h2>
+<h2>Manage Tag Field Choices</h2>
 
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
+<select>
+    @For Each item In ViewBag.tag_Info
+        @<option value="@item.Tag_InfoID">@item.TagName</option>
+    Next
+</select>
+<br/>
+<br/>
 <table class="table">
     <tr>
         <th>
@@ -41,9 +48,9 @@ End Code
             @Html.DisplayFor(Function(modelItem) item.AddedAt)
         </td>
         <td>
-            @*@Html.ActionLink("Edit", "Edit", New With {.id = item.PrimaryKey}) |
-            @Html.ActionLink("Details", "Details", New With {.id = item.PrimaryKey}) |
-            @Html.ActionLink("Delete", "Delete", New With {.id = item.PrimaryKey})*@
+            @Html.ActionLink("Edit", "Edit", New With {.id = item.Tag_ChoicesID}) |
+            @Html.ActionLink("Details", "Details", New With {.id = item.Tag_ChoicesID}) |
+            @Html.ActionLink("Delete", "Delete", New With {.id = item.Tag_ChoicesID})
         </td>
     </tr>
 Next

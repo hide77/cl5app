@@ -13,7 +13,7 @@ Partial Public Class Tag_Info
     <Display(Name:="Tag Name")>
     Public Property TagName As String
 
-    <Display(Name:="Tag Status")>
+    <Display(Name:="Active Flag")>
     Public Property TagStatus As Boolean?
 
     <StringLength(50)>
