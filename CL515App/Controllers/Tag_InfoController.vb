@@ -55,7 +55,8 @@ Namespace CL515App
             If IsNothing(id) Then
                 Return New HttpStatusCodeResult(HttpStatusCode.BadRequest)
             End If
-            Dim tag_Info As Tag_Info = Await db.Tag_Info.FindAsync(id)
+            Dim tag_Info As Tag_Info = Await db.Tag_Info.FindAsync()
+
             If IsNothing(tag_Info) Then
                 Return HttpNotFound()
             End If

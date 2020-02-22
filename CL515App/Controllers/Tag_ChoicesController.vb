@@ -21,11 +21,12 @@ Namespace CL515App
         End Function
 
         ' GET: Tag_Choices/Details/5
-        Async Function Details(ByVal id As Integer?) As Task(Of ActionResult)
+        Function Details(ByVal id As Integer?) As ActionResult
             If IsNothing(id) Then
                 Return New HttpStatusCodeResult(HttpStatusCode.BadRequest)
             End If
-            Dim tag_Choices As Tag_Choices = Await db.Tag_Choices.FindAsync(id)
+            Dim tag_Choices As Tag_Choices = db.Tag_Choices.Where(Function(item) item.Tag_ChoicesID = id).First()
+
             If IsNothing(tag_Choices) Then
                 Return HttpNotFound()
             End If
@@ -33,7 +34,7 @@ Namespace CL515App
         End Function
 
         ' GET: Tag_Choices/Create
-        Function Create() As ActionResult
+        Function Create(ByVal id As Integer?) As ActionResult
             Return View()
         End Function
 
@@ -52,11 +53,11 @@ Namespace CL515App
         End Function
 
         ' GET: Tag_Choices/Edit/5
-        Async Function Edit(ByVal id As Integer?) As Task(Of ActionResult)
+        Function Edit(ByVal id As Integer?) As ActionResult
             If IsNothing(id) Then
                 Return New HttpStatusCodeResult(HttpStatusCode.BadRequest)
             End If
-            Dim tag_Choices As Tag_Choices = Await db.Tag_Choices.FindAsync(id)
+            Dim tag_Choices As Tag_Choices = db.Tag_Choices.Where(Function(item) item.Tag_ChoicesID = id).First()
             If IsNothing(tag_Choices) Then
                 Return HttpNotFound()
             End If
@@ -78,11 +79,11 @@ Namespace CL515App
         End Function
 
         ' GET: Tag_Choices/Delete/5
-        Async Function Delete(ByVal id As Integer?) As Task(Of ActionResult)
+        Function Delete(ByVal id As Integer?) As ActionResult
             If IsNothing(id) Then
                 Return New HttpStatusCodeResult(HttpStatusCode.BadRequest)
             End If
-            Dim tag_Choices As Tag_Choices = Await db.Tag_Choices.FindAsync(id)
+            Dim tag_Choices As Tag_Choices = db.Tag_Choices.Where(Function(item) item.Tag_ChoicesID = id).First()
             If IsNothing(tag_Choices) Then
                 Return HttpNotFound()
             End If
@@ -94,7 +95,7 @@ Namespace CL515App
         <ActionName("Delete")>
         <ValidateAntiForgeryToken()>
         Async Function DeleteConfirmed(ByVal id As Integer) As Task(Of ActionResult)
-            Dim tag_Choices As Tag_Choices = Await db.Tag_Choices.FindAsync(id)
+            Dim tag_Choices As Tag_Choices = db.Tag_Choices.Where(Function(item) item.Tag_ChoicesID = id).First()
             db.Tag_Choices.Remove(tag_Choices)
             Await db.SaveChangesAsync()
             Return RedirectToAction("Index")
