@@ -9,7 +9,7 @@ Namespace Migrations
         Inherits DbMigrationsConfiguration(Of TagModel)
 
         Public Sub New()
-            AutomaticMigrationsEnabled = False
+            AutomaticMigrationsEnabled = True
         End Sub
 
         Protected Overrides Sub Seed(context As TagModel)

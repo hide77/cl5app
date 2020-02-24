@@ -16,7 +16,7 @@ End Code
         @Html.HiddenFor(Function(model) model.Tag_ChoicesID)
 
         @Html.HiddenFor(Function(model) model.TagValue)
-
+        @Html.Hidden("tag_InfoID", ViewBag.tag_InfoID)
         <div class="form-group">
             @Html.LabelFor(Function(model) model.TagDescription, htmlAttributes:= New With { .class = "control-label col-md-2" })
             <div class="col-md-10">
@@ -60,7 +60,7 @@ End Code
 End Using
 
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Back to List", "Show", New With {.id = ViewBag.tag_InfoID})
 </div>
 
 @Section Scripts 

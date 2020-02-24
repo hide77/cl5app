@@ -190,14 +190,18 @@
     <Compile Include="Global.asax.vb">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202002180053337_Initial.Designer.vb">
-      <DependentUpon>202002180053337_Initial.vb</DependentUpon>
+    <Compile Include="Migrations\202002221705486_initial.Designer.vb">
+      <DependentUpon>202002221705486_initial.vb</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202002180053337_Initial.vb" />
-    <Compile Include="Migrations\202002181748417_InitialFix.Designer.vb">
-      <DependentUpon>202002181748417_InitialFix.vb</DependentUpon>
+    <Compile Include="Migrations\202002221705486_initial.vb" />
+    <Compile Include="Migrations\202002221717557_update_foreignkey_name.Designer.vb">
+      <DependentUpon>202002221717557_update_foreignkey_name.vb</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202002181748417_InitialFix.vb" />
+    <Compile Include="Migrations\202002221717557_update_foreignkey_name.vb" />
+    <Compile Include="Migrations\202002230345187_update_tag_list.Designer.vb">
+      <DependentUpon>202002230345187_update_tag_list.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202002230345187_update_tag_list.vb" />
     <Compile Include="Migrations\Configuration.vb" />
     <Compile Include="Models\ExclusionList.vb" />
     <Compile Include="Models\Exclusion_List.vb" />
@@ -230,11 +234,14 @@
     <Compile Include="ViewModels\TagChoiceIndexData.vb" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202002180053337_Initial.resx">
-      <DependentUpon>202002180053337_Initial.vb</DependentUpon>
+    <EmbeddedResource Include="Migrations\202002221705486_initial.resx">
+      <DependentUpon>202002221705486_initial.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202002181748417_InitialFix.resx">
-      <DependentUpon>202002181748417_InitialFix.vb</DependentUpon>
+    <EmbeddedResource Include="Migrations\202002221717557_update_foreignkey_name.resx">
+      <DependentUpon>202002221717557_update_foreignkey_name.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202002230345187_update_tag_list.resx">
+      <DependentUpon>202002230345187_update_tag_list.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="My Project\Resources.resx">
       <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
@@ -259,9 +266,6 @@
     <Content Include="Content\bootstrap-theme.css.map" />
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="..\.editorconfig">
-      <Link>.editorconfig</Link>
     </Content>
     <None Include="My Project\Application.myapp">
       <Generator>MyApplicationCodeGenerator</Generator>
@@ -307,6 +311,7 @@
     <Content Include="Views\Tag_List\Details.vbhtml" />
     <Content Include="Views\Tag_List\Edit.vbhtml" />
     <Content Include="Views\Tag_List\Index.vbhtml" />
+    <Content Include="Views\Tag_Choices\Show.vbhtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="favicon.ico" />
@@ -337,6 +342,9 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

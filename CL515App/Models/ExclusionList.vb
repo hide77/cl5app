@@ -7,7 +7,8 @@ Partial Public Class ExclusionList
     Inherits DbContext
 
     Public Sub New()
-        MyBase.New("name=LocalModel")
+        MyBase.New("name=CL515BOMData")
+        'MyBase.New("name=LocalModel")
     End Sub
 
     Public Overridable Property Exclusion_List As DbSet(Of Exclusion_List)

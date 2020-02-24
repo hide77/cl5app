@@ -1,10 +1,9 @@
-Imports System
+﻿Imports System
 Imports System.Collections.Generic
 Imports System.ComponentModel.DataAnnotations
 Imports System.ComponentModel.DataAnnotations.Schema
 Imports System.Data.Entity.Spatial
-
-Partial Public Class Tag_Info
+Public Class Tag_Info
     <Key>
     <Display(Name:="Tag ID")>
     Public Property Tag_InfoID As Integer
@@ -13,7 +12,7 @@ Partial Public Class Tag_Info
     <Display(Name:="Tag Name")>
     Public Property TagName As String
 
-    <Display(Name:="Active Flag")>
+    <Display(Name:="Tag Status")>
     Public Property TagStatus As Boolean?
 
     <StringLength(50)>

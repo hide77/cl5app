@@ -1,7 +1,7 @@
 ﻿@ModelType IEnumerable(Of CL515App.Tag_Info)
 @Code
-ViewData("Title") = "Index"
-Layout = "~/Views/Shared/_Layout.vbhtml"
+    ViewData("Title") = "Index"
+    Layout = "~/Views/Shared/_Layout.vbhtml"
 End Code
 
 <h2>Manage Tag Fields</h2>
@@ -29,29 +29,29 @@ End Code
         <th></th>
     </tr>
 
-@For Each item In Model
-    @<tr>
-        <td>
-            @Html.DisplayFor(Function(modelItem) item.Tag_InfoID)
-        </td>
-        <td>
-            @Html.DisplayFor(Function(modelItem) item.TagName)
-        </td>
-        <td>
-            @Html.DisplayFor(Function(modelItem) item.TagStatus)
-        </td>
-        <td>
-            @Html.DisplayFor(Function(modelItem) item.AddedBy)
-        </td>
-        <td>
-            @Html.DisplayFor(Function(modelItem) item.AddedAt)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", New With {.id = item.Tag_InfoID }) |
-            @Html.ActionLink("Details", "Details", New With {.id = item.Tag_InfoID }) |
-            @Html.ActionLink("Delete", "Delete", New With {.id = item.Tag_InfoID })
-        </td>
-    </tr>
-Next
+    @For Each item In Model
+        @<tr>
+            <td>
+                @Html.DisplayFor(Function(modelItem) item.Tag_InfoID)
+            </td>
+            <td>
+                @Html.DisplayFor(Function(modelItem) item.TagName)
+            </td>
+            <td>
+                @Html.DisplayFor(Function(modelItem) item.TagStatus)
+            </td>
+            <td>
+                @Html.DisplayFor(Function(modelItem) item.AddedBy)
+            </td>
+            <td>
+                @Html.DisplayFor(Function(modelItem) item.AddedAt)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", New With {.id = item.Tag_InfoID}) |
+                @Html.ActionLink("Details", "Details", New With {.id = item.Tag_InfoID}) |
+                @Html.ActionLink("Delete", "Delete", New With {.id = item.Tag_InfoID})
+            </td>
+        </tr>
+    Next
 
 </table>

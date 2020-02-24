@@ -1,10 +1,9 @@
-Imports System
+﻿Imports System
 Imports System.Collections.Generic
 Imports System.ComponentModel.DataAnnotations
 Imports System.ComponentModel.DataAnnotations.Schema
 Imports System.Data.Entity.Spatial
-
-Partial Public Class Tag_Choices
+Public Class Tag_Choices
     <Key>
     <Column(Order:=0)>
     <Display(Name:="Tag Id")>
@@ -32,4 +31,7 @@ Partial Public Class Tag_Choices
     <Display(Name:="Added At")>
     Public Property AddedAt As Date
 
+    <ForeignKey("Tag_Info")>
+    Public Property Tag_Info_Tag_InfoID As Integer
+    Public Property Tag_Info As Tag_Info
 End Class

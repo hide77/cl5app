@@ -6,14 +6,14 @@ Imports System.Resources
 
 Namespace Migrations
     <GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")>
-    Public NotInheritable Partial Class InitialFix
+    Public NotInheritable Partial Class update_foreignkey_name
         Implements IMigrationMetadata
     
-        Private ReadOnly Resources As New ResourceManager(GetType(InitialFix))
+        Private ReadOnly Resources As New ResourceManager(GetType(update_foreignkey_name))
         
         Private ReadOnly Property IMigrationMetadata_Id() As String Implements IMigrationMetadata.Id
             Get
-                Return "202002181748417_InitialFix"
+                Return "202002221717557_update_foreignkey_name"
             End Get
         End Property
         

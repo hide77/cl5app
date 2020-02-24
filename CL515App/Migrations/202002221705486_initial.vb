@@ -3,7 +3,7 @@ Imports System.Data.Entity.Migrations
 Imports Microsoft.VisualBasic
 
 Namespace Migrations
-    Public Partial Class Initial
+    Public Partial Class initial
         Inherits DbMigration
     
         Public Overrides Sub Up()
@@ -16,9 +16,12 @@ Namespace Migrations
                         .TagDescription = c.String(nullable := False, maxLength := 255),
                         .TagActive = c.Boolean(nullable := False),
                         .AddedBy = c.String(nullable := False, maxLength := 50),
-                        .AddedAt = c.DateTime(nullable := False)
+                        .AddedAt = c.DateTime(nullable := False),
+                        .Tag_InfoID = c.Int(nullable := False)
                     }) _
-                .PrimaryKey(Function(t) New With { t.Tag_ChoicesID, t.TagValue })
+                .PrimaryKey(Function(t) New With { t.Tag_ChoicesID, t.TagValue }) _
+                .ForeignKey("dbo.Tag_Info", Function(t) t.Tag_InfoID, cascadeDelete := True) _
+                .Index(Function(t) t.Tag_InfoID)
             
             CreateTable(
                 "dbo.Tag_Info",
@@ -28,25 +31,21 @@ Namespace Migrations
                         .TagName = c.String(maxLength := 50),
                         .TagStatus = c.Boolean(),
                         .AddedBy = c.String(maxLength := 50),
-                        .AddedAt = c.DateTime(),
-                        .Tag_Choices_Tag_ChoicesID = c.Int(),
-                        .Tag_Choices_TagValue = c.String(maxLength := 50)
+                        .AddedAt = c.DateTime()
                     }) _
-                .PrimaryKey(Function(t) t.Tag_InfoID) _
-                .ForeignKey("dbo.Tag_Choices", Function(t) New With { t.Tag_Choices_Tag_ChoicesID, t.Tag_Choices_TagValue }) _
-                .Index(Function(t) New With { t.Tag_Choices_Tag_ChoicesID, t.Tag_Choices_TagValue })
+                .PrimaryKey(Function(t) t.Tag_InfoID)
             
             CreateTable(
                 "dbo.Tag_List",
                 Function(c) New With
                     {
-                        .PartNumber = c.String(nullable := False, maxLength := 255, unicode := false),
-                        .Tag1 = c.String(maxLength := 50, unicode := false),
-                        .Tag2 = c.String(maxLength := 50, unicode := false),
-                        .Tag3 = c.String(maxLength := 50, unicode := false),
-                        .Tag4 = c.String(maxLength := 50, unicode := false),
-                        .Tag5 = c.String(maxLength := 50, unicode := false),
-                        .Tag6 = c.String(maxLength := 50, unicode := false),
+                        .PartNumber = c.String(nullable := False, maxLength := 255),
+                        .Tag1 = c.String(maxLength := 50),
+                        .Tag2 = c.String(maxLength := 50),
+                        .Tag3 = c.String(maxLength := 50),
+                        .Tag4 = c.String(maxLength := 50),
+                        .Tag5 = c.String(maxLength := 50),
+                        .Tag6 = c.String(maxLength := 50),
                         .Tag7 = c.String(maxLength := 50),
                         .Tag8 = c.String(maxLength := 50),
                         .Tag9 = c.String(maxLength := 50),
@@ -67,8 +66,8 @@ Namespace Migrations
         End Sub
         
         Public Overrides Sub Down()
-            DropForeignKey("dbo.Tag_Info", New String() { "Tag_Choices_Tag_ChoicesID", "Tag_Choices_TagValue" }, "dbo.Tag_Choices")
-            DropIndex("dbo.Tag_Info", New String() { "Tag_Choices_Tag_ChoicesID", "Tag_Choices_TagValue" })
+            DropForeignKey("dbo.Tag_Choices", "Tag_InfoID", "dbo.Tag_Info")
+            DropIndex("dbo.Tag_Choices", New String() { "Tag_InfoID" })
             DropTable("dbo.Tag_List")
             DropTable("dbo.Tag_Info")
             DropTable("dbo.Tag_Choices")

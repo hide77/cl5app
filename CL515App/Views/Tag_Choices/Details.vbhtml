@@ -46,5 +46,5 @@ End Code
 </div>
 <p>
     @*@Html.ActionLink("Edit", "Edit", New With {.id = Model.PrimaryKey}) |*@
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Back to List", "Show", New With {.id = ViewBag.tag_InfoID})
 </p>

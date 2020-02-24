@@ -62,7 +62,7 @@ End Code
                 @Html.ValidationMessageFor(Function(model) model.AddedAt, "", New With { .class = "text-danger" })
             </div>
         </div>
-
+        @Html.Hidden("tag_InfoID", ViewBag.tag_InfoID)
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
                 <input type="submit" value="Create" class="btn btn-default" />
@@ -72,7 +72,7 @@ End Code
 End Using
 
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Back to List", "Show", New With {.id = ViewBag.tag_InfoID})
 </div>
 
 @Section Scripts 

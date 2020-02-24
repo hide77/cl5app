@@ -2,6 +2,7 @@
 Imports System.Collections.Generic
 Imports System.Data
 Imports System.Data.Entity
+Imports System.Data.SqlClient
 Imports System.Linq
 Imports System.Threading.Tasks
 Imports System.Net
@@ -45,6 +46,11 @@ Namespace CL515App
             If ModelState.IsValid Then
                 db.Tag_Info.Add(tag_Info)
                 Await db.SaveChangesAsync()
+                'Dim command As String = String.Concat("ALTER TABLE dbo.Tag_List Add tag_", tag_Info.Tag_InfoID, " nvarchar(50) NOT NULL")
+                Dim command As String = String.Concat("ALTER TABLE dbo.Tag_List Add tag_", tag_Info.Tag_InfoID, " nvarchar(50)")
+                Await db.Database.ExecuteSqlCommandAsync(command)
+                'command = String.Concat("ALTER TABLE dbo.Tag_List Add CONSTRAINT FK_Tag_List_Tag_Info", tag_Info.Tag_InfoID, " FOREIGN KEY ([", tag_Info.Tag_InfoID, "]) REFERENCES dbo.Tag_Choices (TagValue) ON DELETE CASCADE")
+                'Await db.Database.ExecuteSqlCommandAsync(command)
                 Return RedirectToAction("Index")
             End If
             Return View(tag_Info)
@@ -55,8 +61,7 @@ Namespace CL515App
             If IsNothing(id) Then
                 Return New HttpStatusCodeResult(HttpStatusCode.BadRequest)
             End If
-            Dim tag_Info As Tag_Info = Await db.Tag_Info.FindAsync()
-
+            Dim tag_Info As Tag_Info = Await db.Tag_Info.FindAsync(id)
             If IsNothing(tag_Info) Then
                 Return HttpNotFound()
             End If
@@ -95,6 +100,9 @@ Namespace CL515App
         <ValidateAntiForgeryToken()>
         Async Function DeleteConfirmed(ByVal id As Integer) As Task(Of ActionResult)
             Dim tag_Info As Tag_Info = Await db.Tag_Info.FindAsync(id)
+            'Dim command As String = String.Concat("ALTER TABLE dbo.Tag_List Drop CONSTRAINT FK_Tag_List_Tag_Info", tag_Info.Tag_InfoID)
+            Dim command As String = String.Concat("ALTER TABLE dbo.Tag_List DROP COLUMN tag_", tag_Info.Tag_InfoID)
+            Await db.Database.ExecuteSqlCommandAsync(command)
             db.Tag_Info.Remove(tag_Info)
             Await db.SaveChangesAsync()
             Return RedirectToAction("Index")
